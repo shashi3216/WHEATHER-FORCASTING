@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSphere - Smart Weather Forecast</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="container mx-auto max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-8 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">WeatherCheacking</h1>
+            <p class="text-white opacity-90 text-lg">Get accurate weather Result worldwide</p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="weather-card p-6 mb-8 fade-in">
+            <div class="flex flex-col md:flex-row gap-4 items-center">
+                <input 
+                    type="text" 
+                    id="cityInput" 
+                    placeholder="Enter city name..." 
+                    class="search-input flex-1"
+                >
+                <button id="searchBtn" class="search-btn">
+                    <i class="fas fa-search mr-2"></i>Search
+                </button>
+                <button id="locationBtn" class="search-btn bg-green-500 hover:bg-green-600">
+                    <i class="fas fa-location-arrow mr-2"></i>Current Location
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+            <div class="flex flex-col items-center">
+                <div class="w-16 h-16 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+                <p class="text-white">Fetching weather data...</p>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" style="display: none;">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            <span id="errorText">Unable to fetch weather data. Please try again.</span>
+        </div>
+
+        <!-- Weather Display -->
+        <div id="weatherDisplay" class="weather-card p-8 mb-8" style="display: none;">
+            <div class="text-center mb-6">
+                <h2 id="cityName" class="text-2xl md:text-3xl font-semibold mb-2">New York</h2>
+                <p id="currentDate" class="text-gray-600">Monday, January 1, 2024</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between mb-8">
+                <div class="weather-icon mb-4 md:mb-0">
+                    <i id="weatherIcon" class="fas fa-sun text-6xl text-yellow-400"></i>
+                </div>
+                <div class="text-center md:text-right">
+                    <div id="temperature" class="temperature mb-2">24°C</div>
+                    <p id="weatherDescription" class="text-xl font-medium">Sunny</p>
+                </div>
+            </div>
+
+            <!-- Weather Details -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="weather-detail">
+                    <i class="fas fa-temperature-high text-blue-500 text-2xl mb-2"></i>
+                    <p class="font-medium">Feels Like</p>
+                    <p id="feelsLike" class="text-2xl">26°C</p>
+                </div>
+                <div class="weather-detail">
+                    <i class="fas fa-tint text-blue-300 text-2xl mb-2"></i>
+                    <p class="font-medium">Humidity</p>
+                    <p id="humidity" class="text-2xl">65%</p>
+                </div>
+                <div class="weather-detail">
+                    <i class="fas fa-wind text-gray-500 text-2xl mb-2"></i>
+                    <p class="font-medium">Wind Speed</p>
+                    <p id="windSpeed" class="text-2xl">12 km/h</p>
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="weather-detail">
+                    <i class="fas fa-eye text-purple-500 text-2xl mb-2"></i>
+                    <p class="font-medium">Visibility</p>
+                    <p id="visibility" class="text-xl">10 km</p>
+                </div>
+                <div class="weather-detail">
+                    <i class="fas fa-cloud text-gray-400 text-2xl mb-2"></i>
+                    <p class="font-medium">Cloudiness</p>
+                    <p id="cloudiness" class="text-xl">20%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5-Day Forecast -->
+        <div id="forecastSection" class="weather-card p-6" style="display: none;">
+            <h3 class="text-xl font-semibold mb-6 text-center">5-Day Forecast</h3>
+            <div id="forecastContainer" class="grid grid-cols-1 md:grid-cols-5 gap-2">
+                <!-- Forecast days will be populated here -->
+            </div>
+        </div>
+
+        <!-- Background Image for visual appeal -->
+        <div class="fixed inset-0 -z-10 opacity-20">
+            <img 
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6b8686f4-7c07-40e5-bb29-62765d0987fd.png" 
+                alt="Abstract weather pattern background with swirling clouds and sun rays breaking through in a modern graphic design style" 
+                class="w-full h-full object-cover"
+                onerror="this.style.display='none'"
+            >
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+        &copy; 2025 WeatherSphere. All rights reserved.
+        &nbsp;Shrikant kumar|&nbsp;
+</body>
+</html>
